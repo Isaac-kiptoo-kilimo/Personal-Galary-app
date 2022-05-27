@@ -1,0 +1,1 @@
+web: gunicorn galary.wsgi --log-file -
