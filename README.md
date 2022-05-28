@@ -13,35 +13,35 @@ This is a gallery website made using django for the front-end and  backend
 
 ## Behaviour Driven Development (BDD)
 
-## Create Blog
+## upload
 - Behaviour	
-  Create blog	
+  upload image	
 - Input	
-  Click create blog on navbar and fill in create blog form
+  Click create blog on navbar and fill in upload image form
 - Output
-  User gets redirected to m is filled the new blog post is added
-## Edit Blog
+  User gets redirected to image page is filled the new blog post is added
+## Edit image
 - Behaviour
   Edit blog
-  Click edit blog button in blog view page
+  Click edit image button in image view page
 - Input	
-  Edit blog content in edit blog form
+  Edit image content in edit image form
 - Output
 		
 ## Delete blog
 - Behaviour	
-  Delete blog
+  Delete image
 - Input	
-  Click delete blog button and confirm
+  Click delete image button and confirm
 - Output
-  delete	Blog gets deleted 
+  delete	image gets deleted 
 ## Group blog
 - Behaviour	
-  Group blogs by category
+  Group images by category
 - Input	
-  click blog category in blogs page
+  click image category in images page
 - Output
-  Blogs displayed are filtered through by their category	
+  images displayed are filtered through by their category	
 
 ## Project setup
 
