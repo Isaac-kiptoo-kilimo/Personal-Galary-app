@@ -18,6 +18,18 @@
       <div class="col-sm-6 col-md-3">
           <h1>{{category.title}}</h1>
       </div>
+      <div>
+      {% for image in images %}
+      <a href="">
+        <img
+        src="{{image.image.url}}"
+        alt=""
+        
+        width="100%"
+      />
+       </a>
+      {% endfor %}
+    </div>
     {% endfor %}
   {% endif %}
   </div>
