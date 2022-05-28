@@ -1,15 +1,31 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="container">
-    <h2 class="h3 mb-3 font-weight-normal">
-        Upload image
-    </h2>
-    <form action="" method="POST" class="form-control" enctype="multipart/form-data">
-        <label for="image" class="custom-file-label"></label>
-        <input type="file"  name="image" class="custom-file-input" required>choose a file
-        <input type="submit">
-        <br/>
-        <button class="btn btn-primary" type submit>Upload Photo</button>
-    </form>
+{% extends 'base.html' %} {% block content %}
+<div class="container mb-5 w-50 addimage ms-auto">
+  <div class="my-4 text-info">
+    <h1>Add New Image</h1>
+  </div>
+  <div class="my-4">
+    <h4>Render Your Favourite Images to experience the best experience</h4>
+  </div>
+  <div class="my-3">
+    <h1>Upload new File</h1>
+  </div>
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    class="mb-5">
+    <div class="input">
+        <input type="file" class="form-group" name="photo" required />
+    </div>
+    <div class="input">
+        <input type="" class="form-group" name="photo" required /> 
+        <label for="">Add your image name </label> 
+    </div>
+    <div class="input">
+        <input type="" class="form-group" name="photo" required />
+        <label for="">Add small description </label>
+    </div>
+    <input class="btn btn-info" type="submit" value="Upload" />
+  </form>
 </div>
 {% endblock%}
