@@ -13,6 +13,28 @@ class Image(models.Model):
     location=models.ForeignKey('Location',on_delete=models.CASCADE,)
     category=models.ForeignKey('Category',on_delete=models.CASCADE)
 
+    def save_image(self):
+        self.save()
+
+    
+    def delete_image(self):
+        self.delete()
+    
+    def update_image(self):
+        self.update()
+    
+    def get_image_by_id(id):
+        images_id=Image.objects.get(image_id = id)
+        return images_id
+
+    def search_image(category):
+        images=Image.objects.filter(category=category)
+        return images
+
+    class Meta:
+        ordering = ['name']
+
+
     def __str__(self) :
         return self.name
 
