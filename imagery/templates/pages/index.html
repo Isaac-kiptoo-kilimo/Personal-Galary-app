@@ -9,188 +9,31 @@
     </div>
     <div class="container mt-4">
         <h3>Samples of photos in my Gallery</h3>
+      {% for image in images %}
         <div class="row m-4">
-            <div class="col-md-3 my-2 mx-0">
-              <div class="img_card">
-               <a href="">
-                <img
-                src="/static/images/furniture1.jpg"
-                alt=""
-                
-                width="100%"
-              />
-               </a>
-                <div class="download m-2">
-                  <a
-                    class="btn btn-outline-info custom-btn"
-                    href="/static/photos/{{image.img}}"
-                    download
-                    >download</a
-                  >
-                </div>
+           
+           <div class="col-md-3 my-2 mx-0">
+            <div class="img_card">
+             <a href="">
+              <img
+              src="{{image.image.url}}"
+              alt=""
+              
+              width="100%"
+            />
+             </a>
+              <div class="download m-2">
+                <a
+                  class="btn btn-outline-info custom-btn"
+                  href="#"
+                  download
+                  >download</a
+                >
               </div>
             </div>
-            <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 my-2 mx-0">
-                <div class="img_card">
-                 <a href="">
-                  <img
-                  src="/static/images/furniture1.jpg"
-                  alt=""
-                  
-                  width="100%"
-                />
-                 </a>
-                  <div class="download m-2">
-                    <a
-                      class="btn btn-outline-info custom-btn"
-                      href="/static/photos/{{image.img}}"
-                      download
-                      >download</a
-                    >
-                  </div>
-                </div>
-              </div>
+           </div> 
           </div>
+      {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -50,6 +50,12 @@ class Location(models.Model):
 class Category(models.Model):
     title=models.CharField(max_length=100)
     content=models.TextField(max_length=300)
-    
+
+   
+    @classmethod
+    def search_by_title(cls,search_term):
+        categories = cls.objects.filter(title__icontains=search_term)
+        return categories
+        
     def __str__(self) :
-        return self.name
+        return self.title
