@@ -7,3 +7,20 @@
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
 
 }
+.custom-card a:hover{
+    color: red;
+    
+}
+.navbar{
+    background-color: #ECEEF3;
+    color: #ECEEF3;
+    cursor: pointer;
+}
+
+.footer{
+    background-color: #1F2937;
+    color: white;
+}
+img:hover{
+    background-color: #ECEEF3;
+}
