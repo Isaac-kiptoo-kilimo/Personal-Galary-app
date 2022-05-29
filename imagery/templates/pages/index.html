@@ -1,39 +1,133 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row hero">
-        <h1>Welcome to my Gallery app</h1>
-        <div class="col-md-6">
-            <p>Description</p>
-        </div>
-    </div>
-    <div class="container mt-4">
-        <h3>Samples of photos in my Gallery</h3>
-      {% for image in images %}
-        <div class="row m-4">
-           
-           <div class="col-md-3 my-2 mx-0">
-            <div class="img_card">
-             <a href="">
-              <img
-              src="{{image.image.url}}"
-              alt=""
-              
-              width="100%"
-            />
-             </a>
-              <div class="download m-2">
-                <a
-                  class="btn btn-outline-info custom-btn"
-                  href="#"
-                  download
-                  >download</a
-                >
-              </div>
-            </div>
-           </div> 
-          </div>
-      {% endfor %}
-    </div>
+<div class="bg-dark">
+  <div class="container py-5">
+    <h1 class="text-center text-white">
+      My Gallery Photos
+    </h1>
+  </div>
 </div>
+<div class="container my-3">
+ 
+  <div class="row">
+    {% for image in images %}
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="img-top">
+          <img src="{{image.image.url}}"  width="100%" alt="{{image.name}}" data-bs-toggle="modal" data-bs-target="#imagemodal" data-img_name="{{image.image.name}}" data-img_src="{{image.image.url}}" data-img_description="{{image.description}}" data-img_location="{{image.location}}" data-img_category="{{image.category}}" data-img_pubdate="{{image.pub_date}}" data-img_size="{{image.size}}">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="imagemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="" width="100%" id="modalimage" alt="">
+        <div>
+          <div id="imagedetails">
+            
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let imageModal = document.getElementById('imagemodal')
+  function detail(detail){
+    const row=`
+    <div class="row my-2">
+      <div class="col-4">
+        <p>${detail.title}</p>
+      </div>
+      <div class="col-8">
+        <p>${detail.value}</p>
+      </div>
+    </div>
+    `
+    return row
+  }
+  function imageDetails(details,name){
+    let imagedetails=` `
+    for(let i=0;i<details.length;i++){
+      imagedetails+=detail(details[i])
+    }
+    return imagedetails+`<button class="btn btn-primary" onclick="copyToClipboard(${name})">Copy Link</button>`
+
+  }
+    imageModal.addEventListener('show.bs.modal', function (event) {
+   
+    let img = event.relatedTarget
+    
+    let image_name = img.getAttribute('data-img_name')
+    let image_src = img.getAttribute('data-img_src')
+    let image_desc= img.getAttribute('data-img_description')
+    let image_location = img.getAttribute('data-img_location')
+    let image_category = img.getAttribute('data-img_category')
+    let image_pubdate = img.getAttribute('data-img_pubdate')
+    let image_size = img.getAttribute('data-img_size')
+    const img_details=[
+      {
+        title:"Name",
+        value:image_name
+      },
+      {
+        title:"Description",
+        value:image_desc
+      },
+      {
+        title:"Size",
+        value:image_size
+      },
+      {
+        title:"Location",
+        value:image_location
+      },
+      {
+        title:"Category",
+        value:image_category
+      },
+      {
+        title:"Published at",
+        value:image_pubdate
+      },
+    
+    ]
+   
+    let modalTitle = imageModal.querySelector('.modal-title')
+    let modalimage=imageModal.querySelector('#modalimage')
+    let modaldetails=imageModal.querySelector('#imagedetails')
+
+    modalTitle.textContent = image_name
+    modalimage.src=image_src
+    const url=window.location.host+window.location.protocol+"//"+image_src
+    modaldetails.innerHTML=imageDetails(img_details,"url")
+  })
+  const copyToClipboard = (valuetocopy) => {
+    const textarea = document.createElement('textarea')
+    textarea.value = valuetocopy;
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textarea)
+    
+  }
+</script>
+
 {% endblock %}

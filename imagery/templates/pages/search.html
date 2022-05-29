@@ -1,37 +1,146 @@
-{%extends 'base.html'%} 
+{% extends 'base.html' %}
 {% block content %}
-<div class="container">
-
-  <div class="row">
-    {% if categories %}
-      <h2>Found {{ category |length }} of searched term {{message}}</h2>
-    {% else %}
-      <h2> Found 0 images for the search term {{message}}</h2>
-    {% endif %}
-
-  </div>
-
-  <div class="row">
-
-  {% if categories %}
-    {% for category in categories %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{category.title}}</h1>
-      </div>
-      <div>
-      {% for image in images %}
-      <a href="">
-        <img
-        src="{{image.image.url}}"
-        alt=""
-        
-        width="100%"
-      />
-       </a>
-      {% endfor %}
-    </div>
-    {% endfor %}
-  {% endif %}
+<div class="bg-dark">
+  <div class="container py-5">
+    <h1 class="text-center text-white">
+      Search Photos
+    </h1>
+    
   </div>
 </div>
+<div class="container my-3">
+ 
+  <div class="row">
+    <div class="col-md-4">
+      <div class="custom-card mb-3">
+        <h3 class="mb-2">Categories</h3>
+        {% for cat in categories %}
+        <div class="mb-1">
+          <a href="{%  url 'search' %}?category={{cat.id}}" class="nav-link text-capitalize">{{cat.title}}</a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="custom-card mb-2">
+        <h3 class="mb-2">Locations</h3>
+        {% for loc in locations %}
+        <div class="mb-1">
+          <a href="{%  url 'search' %}?location={{loc.id}}" class="nav-link text-capitalize">{{loc.place}}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        {% for image in images %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="img-top">
+              <img src="{{image.image.url}}"  width="100%" alt="{{image.name}}" data-bs-toggle="modal" data-bs-target="#imagemodal" data-img_name="{{image.image.name}}" data-img_src="{{image.image.url}}" data-img_description="{{image.description}}" data-img_location="{{image.location}}" data-img_category="{{image.category}}" data-img_pubdate="{{image.pub_date}}" data-img_size="{{image.size}}">
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="imagemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="" width="100%" id="modalimage" alt="">
+        <div>
+          <div id="imagedetails">
+            
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let imageModal = document.getElementById('imagemodal')
+  function detail(detail){
+    const row=`
+    <div class="row my-2">
+      <div class="col-4">
+        <p>${detail.title}</p>
+      </div>
+      <div class="col-8">
+        <p>${detail.value}</p>
+      </div>
+    </div>
+    `
+    return row
+  }
+  function imageDetails(details){
+    let imagedetails=` `
+    for(let i=0;i<details.length;i++){
+      imagedetails+=detail(details[i])
+    }
+    return imagedetails
+  }
+    imageModal.addEventListener('show.bs.modal', function (event) {
+   
+    let img = event.relatedTarget
+    
+    let image_name = img.getAttribute('data-img_name')
+    let image_src = img.getAttribute('data-img_src')
+    let image_desc= img.getAttribute('data-img_description')
+    let image_location = img.getAttribute('data-img_location')
+    let image_category = img.getAttribute('data-img_category')
+    let image_pubdate = img.getAttribute('data-img_pubdate')
+    let image_size = img.getAttribute('data-img_size')
+    const img_details=[
+      {
+        title:"Name",
+        value:image_name
+      },
+      {
+        title:"Description",
+        value:image_desc
+      },
+      {
+        title:"Size",
+        value:image_size
+      },
+      {
+        title:"Location",
+        value:image_location
+      },
+      {
+        title:"Category",
+        value:image_category
+      },
+      {
+        title:"Published at",
+        value:image_pubdate
+      },
+    
+    ]
+   
+    let modalTitle = imageModal.querySelector('.modal-title')
+    let modalimage=imageModal.querySelector('#modalimage')
+    let modaldetails=imageModal.querySelector('#imagedetails')
+
+    modalTitle.textContent = image_name
+    modalimage.src=image_src
+    modaldetails.innerHTML=imageDetails(img_details)
+  })
+</script>
+
 {% endblock %}

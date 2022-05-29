@@ -1,31 +1,63 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container mb-5 w-50 addimage ms-auto">
-  <div class="my-4 text-info">
-    <h1>Add New Image</h1>
+<div class="bg-dark">
+  <div class="container py-5">
+    <h1 class="text-center text-white">
+      Add Image
+    </h1>
   </div>
-  <div class="my-4">
-    <h4>Render Your Favourite Images to experience the best experience</h4>
+</div>
+<div class="container my-5 ">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="custom-card">
+        <div class="">
+          <h1 class="text-center mb-3">Add New Image</h1>
+          <p class="text-center">
+            Render Your Favourite Images to experience the best experience
+          </p>
+        </div>
+        <div>
+          <form
+          method="POST"
+          enctype="multipart/form-data"
+          class="mb-5">
+          {% csrf_token %}
+          <div class="form-group mb-3">
+            <label for="">Image name </label> 
+            <input type="" class="form-control input-lg shadow-none" name="name" required /> 
+          </div>
+          <div class="form-group mb-3">
+            <label for="">Description </label>
+            <input type="" class="form-control input-lg shadow-none" name="description" required />
+          </div>
+          <div class="form-group mb-3">
+            <label for="category">Category</label>
+            <select name="category" id="category" class="form-select shadow-none">
+              <option value="">Select Category</option>
+              {% for cat in categories %}
+              <option value="{{cat.id}}">{{cat.title}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="location">Location</label>
+            <select name="location" id="location" class="form-select shadow-none">
+              <option value="">Select Location</option>
+              {% for location in locations %}
+              <option value="{{location.id}}">{{location.place}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="file">Select image file</label>
+            <input type="file" class="form-control input-lg shadow-none" name="photo" required />
+        </div>
+          <button class="btn btn-primary shadow-none mt-3">UPLOAD</button>
+        </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="my-3">
-    <h1>Upload new File</h1>
-  </div>
-  <form
-    action=""
-    method="post"
-    enctype="multipart/form-data"
-    class="mb-5">
-    <div class="input">
-        <input type="file" class="form-group" name="photo" required />
-    </div>
-    <div class="input">
-        <input type="" class="form-group" name="photo" required /> 
-        <label for="">Add your image name </label> 
-    </div>
-    <div class="input">
-        <input type="" class="form-group" name="photo" required />
-        <label for="">Add small description </label>
-    </div>
-    <input class="btn btn-info" type="submit" value="Upload" />
-  </form>
+  
 </div>
 {% endblock%}
