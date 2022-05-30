@@ -52,3 +52,17 @@ img:hover{
     border-radius: 100% 10% 95% 0% / 100% 100% 100% 10%;
     color: white;
 }
+.add{
+    color: white;
+    background-color: red;
+    border-radius: 36% 0% 33% 31% / 54% 89% 100% 98% ;
+}
+.custom-card-add{
+    
+    background-color: red;
+    border-radius: 11% 35% 53% 13% / 51% 81% 60% 98%;
+    padding: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+   
+ 
+}
