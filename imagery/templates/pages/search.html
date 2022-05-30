@@ -5,19 +5,15 @@
     <h1 class="text-center text-white">
       Search Photos
     </h1>
-    <form class="col-12 col-lg-auto mb-2 d-flex" role="search" action="{% url 'search' %}">
-      <input class="form-control me-2" name="image" type="search" placeholder="Search by category" aria-label="Search">
+    <form class="col-12 col-lg-auto mb-2 d-flex" role="search" action="{% url 'searched' %}">
+      <input class="form-control me-2" name="category" type="search" placeholder="Search by category" aria-label="Search">
       <button><i class="fa-solid fa-magnifying-glass" type="submit"></i>search</button>
     </form>
   </div>
 </div>
 <div class="container my-3">
  <!-- search -->
- {% for cat in searched_images %}
- <h5 class="card-title">{{category.title}}, Taken in:{{category.image_location}}</h5>
- <img class="img-responsive" src="{{cat.image.url}}" width="500" height="500" alt="">
- <a href="/" class="btn btn-primary btn-sm">Back</a> 
- {% endfor %}
+ 
   <div class="row">
     <div class="col-md-4">
       <div class="custom-card mb-3">

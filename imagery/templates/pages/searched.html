@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+<div class="container">
+    <div class="row">
+        {% for cat in categories %}
+        <div class="col-md-4">
+            <h5 class="card-title">{{cat.title}}, Taken in:{{cat.image_location}}</h5>
+            <img class="img-responsive" src="{{cat.image.url}}" width="500" height="500" alt="">
+            <a href="/" class="btn btn-primary btn-sm">Back</a> 
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
