@@ -3,14 +3,8 @@
 
 ## Author
 # Isaac Kiptoo Kilimo.
-<!-- [Github]() -->
 
-### Homepage
-![gallaryup](./static/images/galleryup-home.png)
-<!-- ### Wireframe sample
-![nazzblog](./picture/static/images/wirefrm.jpeg) -->
-### Admin panel
-![gallaryup](./static/images/galleryup-admin.png)
+
 
 ## Description
 This is a web application written in Django. It is a photo gallery where users can view different photos based on where they were taken, search the photos by category, and copy the photo link to share with others. The administrator is in charge of populating the database.
@@ -98,3 +92,11 @@ Github Profile - [Isaac kiptoo kilimo](https://github.com/Isaac-kiptoo-kilimo)
 Email Address-[Isaac kiptoo kilimo] (isaac.kiptoo.kilimo@student.moringaschool.com)
 
 Copyright © 2022
+
+# project layout
+
+### Homepage
+![gallaryup](./static/images/galleryup-home.png)
+
+### Admin 
+![gallaryup](./static/images/galleryup-admin.png)
