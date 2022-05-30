@@ -3,13 +3,12 @@ from django.shortcuts import render
 from .models import Image,Location,Category
 from django.http import Http404
 from PIL import Image as PILimage
+
+
 def index(request):
     images=Image.objects.all()
    
     return render (request,'pages/index.html',{"images":images})
-
-
-
 
 def addimage(request):
     locations=Location.objects.all()
@@ -45,9 +44,9 @@ def search_results(request):
     return render(request, 'pages/search.html',{"locations":locations,"categories":categories})
 
 def search(request):
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_category = Image.search_by_category(search_term)
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")      
+        searched_category =Image.search_by_category(search_term)
         
         print(searched_category)
         message = f"{search_term}"

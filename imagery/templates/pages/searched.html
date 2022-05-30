@@ -2,15 +2,20 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {% for item in categories %}
-        
-        <div class="col-md-4 bg-primary text-white h-50">
-            <h5 class="card-title">{{item.title}}, Taken in:{{item.location}}</h5>
-            <img class="img-responsive" src="{{item.image.url}}" width="500" height="500" alt="">
+        {% for category in categories %}
+        <h5 class="card-title">{{category.name}}, Taken in:{{category.location}}</h5>
+        <div class="col-md-4">
+            <img class="img-responsive" src="{{category.image.url}}" width="500" height="500" alt="">
             <a href="/" class="btn btn-primary btn-sm">Back</a> 
+            {% if image%}
+            <h4 class="text-center">Found {{ image|length }} images on {{message}}</h4>
+            {% else %}
+            <p>no image found</p>
+            {% endif %}
         </div>
-        {% endfor %}
-        
+       
+       {% endfor %}
     </div>
 </div>
 {% endblock %}
+
