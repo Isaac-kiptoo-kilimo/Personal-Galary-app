@@ -13,7 +13,7 @@
 }
 .navbar{
     background-color: #ECEEF3;
-    color: #ECEEF3;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -25,4 +25,18 @@
 }
 img:hover{
     background-color: #ECEEF3;
+}
+.hero-left h1{
+    font-size: 80px;
+    color: red;
+}
+.img-gal{
+    background-color: red;
+    border-radius: 83% 17% 83% 17% / 25% 61% 39% 75% ;
+}
+.navlog{
+    color: red;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
 }
