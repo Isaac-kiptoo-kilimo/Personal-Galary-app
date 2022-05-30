@@ -25,6 +25,11 @@ class Image(models.Model):
         image.description=img.description
         image.save()
         return image
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        categories = cls.objects.filter(title__icontains=search_term)
+        return categories
     
     def get_image_by_id(id):
         images_id=Image.objects.get(image_id = id)
@@ -53,10 +58,7 @@ class Category(models.Model):
     description=models.TextField(max_length=300)
 
    
-    @classmethod
-    def search_by_title(cls,search_term):
-        categories = cls.objects.filter(title__icontains=search_term)
-        return categories
+   
         
     def __str__(self) :
         return self.title
