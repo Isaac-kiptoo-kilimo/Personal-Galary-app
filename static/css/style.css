@@ -31,6 +31,7 @@ img:hover{
 .hero-left h1{
     font-size: 80px;
     color: red;
+    font-family: 'Poppins';
 }
 .img-gal{
     background-color: red;
