@@ -1,5 +1,7 @@
-
-
+/* 
+---font-family: 'Acme', sans-serif;
+font-family: 'Fredoka One', cursive;
+font-family: 'Poppins', sans-serif; */
 .custom-card{
     background-color: white;
     border-radius: 10px;
@@ -39,4 +41,14 @@ img:hover{
     font-size: 30px;
     font-weight: 600;
     text-decoration: none;
+}
+.images img{
+   
+    cursor: pointer;
+    border: none;
+}
+.search-photos{
+    background-color: red;
+    border-radius: 100% 10% 95% 0% / 100% 100% 100% 10%;
+    color: white;
 }

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="bg-dark">
-  <div class="container py-5">
-    <h1 class="text-center text-white">
-      Search Photos
-    </h1>
+<div class="m-3">
+  <div class="container search-photos py-5">
+    <div class="div  ">
+      <h1 class="text-center">
+        Search Photos
+      </h1>
+    </div>
     <!-- <form class="col-12 col-lg-auto mb-2 d-flex" role="search" action="{% url 'searched' %}">
       <input class="form-control me-2" name="image" type="search" placeholder="Search by category" aria-label="Search">
       <button>search</button>
@@ -17,7 +19,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="custom-card mb-3">
-        <h3 class="mb-2">Categories</h3>
+        <h3 class="mb-2">Search by Categories</h3>
         {% for cat in categories %}
         <div class="mb-1">
           <a href="{%  url 'search' %}?category={{cat.id}}" class="nav-link text-capitalize">{{cat.title}}</a>
@@ -25,7 +27,7 @@
         {% endfor %}
       </div>
       <div class="custom-card mb-2">
-        <h3 class="mb-2">Locations</h3>
+        <h3 class="mb-2">Search Locations</h3>
         {% for loc in locations %}
         <div class="mb-1">
           <a href="{%  url 'search' %}?location={{loc.id}}" class="nav-link text-capitalize">{{loc.place}}</a>

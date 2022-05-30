@@ -21,7 +21,7 @@
     {% for image in images %}
     <div class="col-md-4 mb-3">
       <div class="card">
-        <div class="img-top">
+        <div class="img-top images">
           <img src="{{image.image.url}}"  width="100%" alt="{{image.name}}" data-bs-toggle="modal" data-bs-target="#imagemodal" data-img_name="{{image.image.name}}" data-img_src="{{image.image.url}}" data-img_description="{{image.description}}" data-img_location="{{image.location}}" data-img_category="{{image.category}}" data-img_pubdate="{{image.pub_date}}" data-img_size="{{image.size}}">
         </div>
       </div>
