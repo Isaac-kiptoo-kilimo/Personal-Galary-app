@@ -16,6 +16,7 @@ class Image(models.Model):
 
     
     def delete_image(self):
+        self.save_image()
         self.delete()
     
     def update_image(self,img):
@@ -28,7 +29,7 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,search_term):
-        searched_images = cls.objects.filter(title_icontains=search_term)
+        searched_images = cls.objects.filter(category__category__icontains=search_term)
         return searched_images
     
     def get_image_by_id(id):
@@ -54,11 +55,24 @@ class Location(models.Model):
 
 
 class Category(models.Model):
+    category=models.CharField(max_length=100,null=True)
     title=models.CharField(max_length=100)
     description=models.TextField(max_length=300)
 
-   
-   
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.save_category()
+        self.delete()
+    
+    def get_all_category(self):
+        self.save_category()
         
+    @classmethod
+    def update_category(cls,id,category):
+        category=cls.objects.filter(id=id).update(category=category)
+        return category
+
     def __str__(self) :
         return self.title
