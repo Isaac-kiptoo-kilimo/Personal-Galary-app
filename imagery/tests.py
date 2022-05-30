@@ -6,7 +6,7 @@ import datetime as dt
 # Create your tests here.
 class ImageTestClass(TestCase):
     def setUp(self):
-       self.home= Image(name = 'home', user='isaac', image_title='home',image='isaac.png', description='the image is in good condition',size='320px by 210px',image_url='url')
+       self.home= Image(id=1,name = 'home', image='isaac.png', description='the image is in good condition',size='320px by 210px',pub_date='25-11-2021',Location='Eldoret')
 # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.home,Image))
@@ -16,6 +16,47 @@ class ImageTestClass(TestCase):
         self.home.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
+
+# class ImageTestClass(TestCase):
+#     def setUp(self):
+#         self.location = Location(name='Nairobi')
+#         self.location.save_location()
+
+#         self.category = Category(name='Travel')
+#         self.category.save_category()
+
+        
+
+#         self.image_test = Image(id=1, name='photo', description='this is a image', image='image',image_url='url', location=self.location,category=self.category)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image_test, Image))
+
+    def test_save_image(self):
+        self.image_test.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_delete_image(self):
+        self.image_test.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)
+
+    def test_update_image(self):
+        self.image_test.save_image()
+        self.image_test.update_image(self.image_test.id, 'images/test.jpg')
+        new_image = Image.objects.filter(image='images/test.jpg')
+        self.assertTrue(len(new_image) > 0)
+
+    def test_search_image_by_location(self):
+        self.image_test.save_image()
+        images = self.image_test.filter_by_location(location='Eldoret')
+        self.assertTrue(len(images) == 1)
+
+    def test_search_image_by_category(self):
+        self.image_test.save_image()
+        found_images = self.image_test.filter_by_category(category='Travel')
+        self.assertTrue(len(found_images) == 1)
 
 class CategoryTestClass(TestCase):
 
@@ -38,12 +79,48 @@ class CategoryTestClass(TestCase):
         Location.objects.all().delete()
         Category.objects.all().delete()
     
-    # def test_get_news_today(self):
-    #     today_news = Category.todays_news()
-    #     self.assertTrue(len(today_news)>0)
+class LocationTestClass(TestCase):
 
-    # def test_get_news_by_date(self):
-    #     test_date = '2017-03-17'
-    #     date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-    #     news_by_date = Category.days_news(date)
-    #     self.assertTrue(len(news_by_date) == 0)
+    # Set up method
+    def setUp(self):
+        self.location = Location(name='Nairobi')
+        self.location.save_location()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.location, Location))
+
+    def test_save_location(self):
+        self.location.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)
+
+    def test_delete_location(self):
+        self.location.delete_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) == 0)
+
+    def test_get_locations(self):
+        self.location.save_location()
+        locations = Location.get_locations()
+        self.assertTrue(len(locations) > 0)
+
+class CategoryTestClass(TestCase):
+
+    # Set up method
+    def setUp(self):
+        self.category = Category(name='Travel')
+        self.category.save_category()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.category, Category))
+
+    def test_save_category(self):
+        self.category.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories) > 0)
+
+    def test_delete_category(self):
+        self.category.delete_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category) == 0)
+
