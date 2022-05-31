@@ -76,7 +76,8 @@
     for(let i=0;i<details.length;i++){
       imagedetails+=detail(details[i])
     }
-    return imagedetails+`<button class="btn btn-primary" onclick="copyToClipboard(${name})">Copy Link</button>`
+    return imagedetails
+    // +`<button class="btn btn-primary" onclick="copyToClipboard(${name})">Copy Link</button>`
 
   }
     imageModal.addEventListener('show.bs.modal', function (event) {
@@ -127,15 +128,15 @@
     const url=window.location.host+window.location.protocol+"//"+image_src
     modaldetails.innerHTML=imageDetails(img_details,"url")
   })
-  const copyToClipboard = (valuetocopy) => {
-    const textarea = document.createElement('textarea')
-    textarea.value = valuetocopy;
-    document.body.appendChild(textarea)
-    textarea.select()
-    document.execCommand('copy')
-    document.body.removeChild(textarea)
+  // const copyToClipboard = (valuetocopy) => {
+  //   const textarea = document.createElement('textarea')
+  //   textarea.value = valuetocopy;
+  //   document.body.appendChild(textarea)
+  //   textarea.select()
+  //   document.execCommand('copy')
+  //   document.body.removeChild(textarea)
     
-  }
+  // }
 </script>
 
 {% endblock %}
