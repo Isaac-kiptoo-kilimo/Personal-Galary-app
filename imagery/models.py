@@ -1,5 +1,6 @@
 
 
+from email.mime import image
 from unicodedata import category
 from django.db import models
 
@@ -20,18 +21,21 @@ class Image(models.Model):
         self.save_image()
         self.delete()
     
-    def update_image(self,img):
-        image=Image.objects.get(id = id)
-        image.name=img.name
-        image.image=img.image
-        image.description=img.description
-        image.save()
-        return image
+    
+    def update_image(self,id,image):
+       image=Image.objects.filter(id=id).update(image=image)
+       return image
 
     @classmethod
     def search_by_category(cls,search_term):
         searched= cls.objects.filter(image__icontains=search_term)
         return searched
+
+    @classmethod
+    def search_by_location(cls,search_term):
+        searched=cls.objects.filter(image__icontains=search_term)
+        return searched
+
 
     @classmethod
     def get_image_by_id(cls,id):
@@ -55,11 +59,17 @@ class Location(models.Model):
     def delete_location(self):
         self.save_location()
         self.delete()
+
+    @classmethod
+    def get_locations(cls):
+        locations=Location.objects.all()
+        return locations
     
     @classmethod
     def update_location(cls,id,location):
         location=cls.objects.filter(id=id).update(location=location)
         return location
+
     def __str__(self) :
         return self.place
 
